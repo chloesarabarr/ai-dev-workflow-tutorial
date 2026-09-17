@@ -12,14 +12,6 @@ A milestone can only move to Done when:
 
 ## To Do
 
-### TASK-1: Environment setup and project initialization
-Set up the project structure and install dependencies (Streamlit, Pandas, Plotly).
-- [ ] Project structure created (`app.py`, `data/`, `requirements.txt`)
-- [ ] Dependencies installed and importable
-- [ ] `streamlit run app.py` launches a placeholder app with no errors
-
-Commit:
-
 ### TASK-2: Data loading and basic structure
 Load `sales-data.csv` into a Pandas DataFrame and scaffold the page layout.
 - [ ] CSV loads without errors; date, numeric, and categorical columns parsed correctly
@@ -70,3 +62,12 @@ Commit:
 ## In Progress
 
 ## Done
+
+### TASK-1: Environment setup and project initialization
+Set up the project structure and install dependencies (Streamlit, Pandas, Plotly).
+- [x] Project structure created (`app.py`, `data/`, `requirements.txt`)
+- [x] Dependencies installed and importable
+- [x] `streamlit run app.py` launches a placeholder app with no errors
+
+Commit: e1595c0
+Notes: on this machine's first-ever `streamlit run`, the default (non-headless) invocation blocked on an interactive onboarding email prompt with no stdin available and exited with code 255; fixed by running with `--server.headless true`, which is now the standard way this project runs the app.
