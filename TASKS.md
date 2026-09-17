@@ -12,14 +12,6 @@ A milestone can only move to Done when:
 
 ## To Do
 
-### TASK-6: Testing and refinement
-Verify the dashboard against the PRD's acceptance criteria and polish the presentation.
-- [ ] Dashboard runs without errors or warnings
-- [ ] All displayed values match expected calculations from the CSV
-- [ ] Professional appearance suitable for an executive presentation
-
-Commit:
-
 ### TASK-7: Deployment to Streamlit Community Cloud
 Deploy the dashboard and share a public URL.
 - [ ] App deployed and accessible via a public shareable URL
@@ -31,6 +23,14 @@ Commit:
 ## In Progress
 
 ## Done
+
+### TASK-6: Testing and refinement
+Verify the dashboard against the PRD's acceptance criteria and polish the presentation.
+- [x] Dashboard runs without errors or warnings
+- [x] All displayed values match expected calculations from the CSV
+- [x] Professional appearance suitable for an executive presentation
+
+Commit: (none needed — full verification pass found nothing to fix)
 
 ### TASK-5: Category and region breakdowns
 Add bar charts for sales by category and by region.
