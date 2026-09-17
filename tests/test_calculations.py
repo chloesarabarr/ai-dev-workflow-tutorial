@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from calculations import load_data, total_sales, total_orders
+from calculations import load_data, total_sales, total_orders, monthly_trend
 
 
 @pytest.fixture
@@ -34,3 +34,15 @@ def test_total_sales_sums_all_transactions(df):
 
 def test_total_orders_counts_unique_orders(df):
     assert total_orders(df) == 482
+
+
+def test_monthly_trend_aggregates_by_month_chronologically(df):
+    result = monthly_trend(df)
+    assert list(result.columns) == ["date", "total_amount"]
+    assert len(result) == 12
+    assert result["date"].is_monotonic_increasing
+    first, last = result.iloc[0], result.iloc[-1]
+    assert first["date"] == pd.Timestamp("2024-01-01")
+    assert first["total_amount"] == pytest.approx(7175.17, abs=0.01)
+    assert last["date"] == pd.Timestamp("2024-12-01")
+    assert last["total_amount"] == pytest.approx(15186.34, abs=0.01)

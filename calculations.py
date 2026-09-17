@@ -11,3 +11,13 @@ def total_sales(df):
 
 def total_orders(df):
     return df["order_id"].nunique()
+
+
+def monthly_trend(df):
+    monthly = (
+        df.groupby(df["date"].dt.to_period("M"))["total_amount"]
+        .sum()
+        .reset_index()
+    )
+    monthly["date"] = monthly["date"].dt.to_timestamp()
+    return monthly.sort_values("date").reset_index(drop=True)
