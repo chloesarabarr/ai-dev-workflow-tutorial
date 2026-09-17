@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from calculations import load_data
+from calculations import load_data, total_sales, total_orders
 
 
 @pytest.fixture
@@ -26,3 +26,11 @@ def test_load_data_parses_date_column_as_datetime():
 def test_load_data_raises_for_missing_file():
     with pytest.raises(FileNotFoundError):
         load_data("data/does-not-exist.csv")
+
+
+def test_total_sales_sums_all_transactions(df):
+    assert total_sales(df) == pytest.approx(116500.21, abs=0.01)
+
+
+def test_total_orders_counts_unique_orders(df):
+    assert total_orders(df) == 482
