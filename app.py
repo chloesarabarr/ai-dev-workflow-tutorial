@@ -11,3 +11,7 @@ except Exception as e:
     st.stop()
 
 st.title("ShopSmart Sales Dashboard")
+
+col1, col2 = st.columns(2)
+col1.metric("Total Sales", f"${calculations.total_sales(df):,.0f}")
+col2.metric("Total Orders", f"{calculations.total_orders(df):,}")
