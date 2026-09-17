@@ -12,14 +12,6 @@ A milestone can only move to Done when:
 
 ## To Do
 
-### TASK-4: Sales trend chart
-Add a line chart showing sales over time.
-- [ ] Line chart shows sales over time with correct data
-- [ ] Interactive tooltips show exact values
-- [ ] Chart renders within 2 seconds of data load
-
-Commit:
-
 ### TASK-5: Category and region breakdowns
 Add bar charts for sales by category and by region.
 - [ ] Bar chart shows sales by category, sorted highest to lowest, all categories shown
@@ -47,6 +39,14 @@ Commit:
 ## In Progress
 
 ## Done
+
+### TASK-4: Sales trend chart
+Add a line chart showing sales over time.
+- [x] Line chart shows sales over time with correct data
+- [x] Interactive tooltips show exact values
+- [x] Chart renders within 2 seconds of data load
+
+Commit: a8a7800, a610642
 
 ### TASK-3: KPI cards implementation
 Display Total Sales and Total Orders as prominent KPI cards.
