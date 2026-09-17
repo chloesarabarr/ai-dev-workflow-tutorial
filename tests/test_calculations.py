@@ -1,0 +1,67 @@
+import pandas as pd
+import pytest
+
+from calculations import (
+    load_data, total_sales, total_orders, monthly_trend,
+    sales_by_category, sales_by_region,
+)
+
+
+@pytest.fixture
+def df():
+    return load_data("data/sales-data.csv")
+
+
+def test_load_data_returns_expected_shape_and_columns():
+    result = load_data("data/sales-data.csv")
+    assert len(result) == 482
+    assert list(result.columns) == [
+        "date", "order_id", "product", "category", "region",
+        "quantity", "unit_price", "total_amount",
+    ]
+
+
+def test_load_data_parses_date_column_as_datetime():
+    result = load_data("data/sales-data.csv")
+    assert pd.api.types.is_datetime64_any_dtype(result["date"])
+
+
+def test_load_data_raises_for_missing_file():
+    with pytest.raises(FileNotFoundError):
+        load_data("data/does-not-exist.csv")
+
+
+def test_total_sales_sums_all_transactions(df):
+    assert total_sales(df) == pytest.approx(116500.21, abs=0.01)
+
+
+def test_total_orders_counts_unique_orders(df):
+    assert total_orders(df) == 482
+
+
+def test_monthly_trend_aggregates_by_month_chronologically(df):
+    result = monthly_trend(df)
+    assert list(result.columns) == ["date", "total_amount"]
+    assert len(result) == 12
+    assert result["date"].is_monotonic_increasing
+    first, last = result.iloc[0], result.iloc[-1]
+    assert first["date"] == pd.Timestamp("2024-01-01")
+    assert first["total_amount"] == pytest.approx(7175.17, abs=0.01)
+    assert last["date"] == pd.Timestamp("2024-12-01")
+    assert last["total_amount"] == pytest.approx(15186.34, abs=0.01)
+
+
+def test_sales_by_category_sorted_descending(df):
+    result = sales_by_category(df)
+    assert list(result.columns) == ["category", "total_amount"]
+    assert list(result["category"]) == [
+        "Electronics", "Wearables", "Audio", "Smart Home", "Accessories",
+    ]
+    assert result.iloc[0]["total_amount"] == pytest.approx(42683.67, abs=0.01)
+
+
+def test_sales_by_region_sorted_descending(df):
+    result = sales_by_region(df)
+    assert list(result.columns) == ["region", "total_amount"]
+    assert list(result["region"]) == ["North", "West", "East", "South"]
+    assert result.iloc[0]["total_amount"] == pytest.approx(38857.24, abs=0.01)
