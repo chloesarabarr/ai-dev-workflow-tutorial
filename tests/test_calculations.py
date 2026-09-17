@@ -1,7 +1,10 @@
 import pandas as pd
 import pytest
 
-from calculations import load_data, total_sales, total_orders, monthly_trend
+from calculations import (
+    load_data, total_sales, total_orders, monthly_trend,
+    sales_by_category, sales_by_region,
+)
 
 
 @pytest.fixture
@@ -46,3 +49,19 @@ def test_monthly_trend_aggregates_by_month_chronologically(df):
     assert first["total_amount"] == pytest.approx(7175.17, abs=0.01)
     assert last["date"] == pd.Timestamp("2024-12-01")
     assert last["total_amount"] == pytest.approx(15186.34, abs=0.01)
+
+
+def test_sales_by_category_sorted_descending(df):
+    result = sales_by_category(df)
+    assert list(result.columns) == ["category", "total_amount"]
+    assert list(result["category"]) == [
+        "Electronics", "Wearables", "Audio", "Smart Home", "Accessories",
+    ]
+    assert result.iloc[0]["total_amount"] == pytest.approx(42683.67, abs=0.01)
+
+
+def test_sales_by_region_sorted_descending(df):
+    result = sales_by_region(df)
+    assert list(result.columns) == ["region", "total_amount"]
+    assert list(result["region"]) == ["North", "West", "East", "South"]
+    assert result.iloc[0]["total_amount"] == pytest.approx(38857.24, abs=0.01)
