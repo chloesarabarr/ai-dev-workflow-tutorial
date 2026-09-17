@@ -33,8 +33,11 @@ streamlit run app.py --server.headless true   # see note below on --server.headl
 
 - **`calculations.py`** — all data logic: loading the CSV and every aggregation
   (`load_data`, `total_sales`, `total_orders`, `monthly_trend`, `sales_by_category`,
-  `sales_by_region`). Pure functions on plain pandas objects, no formatting, no Streamlit
-  imports. This is the only file covered by `tests/test_calculations.py`.
+  `sales_by_region`). Pure functions on plain pandas objects, no formatting. The one
+  exception is `load_data`, which is decorated with `@st.cache_data` (so it needs
+  `import streamlit`) to avoid re-reading the CSV on every Streamlit rerun — every other
+  function stays free of Streamlit imports. This is the only file covered by
+  `tests/test_calculations.py`.
 - **`app.py`** — Streamlit page config, layout, and Plotly chart-builder helpers
   (`trend_line_chart`, `category_bar_chart`, `region_bar_chart`). Calls into
   `calculations.py` for all numbers; never computes aggregates itself. Not unit-tested —
