@@ -12,14 +12,6 @@ A milestone can only move to Done when:
 
 ## To Do
 
-### TASK-3: KPI cards implementation
-Display Total Sales and Total Orders as prominent KPI cards.
-- [ ] Total Sales displayed as formatted currency (~$116,500)
-- [ ] Total Orders displayed as formatted count (482)
-- [ ] KPIs displayed prominently at the top of the dashboard
-
-Commit:
-
 ### TASK-4: Sales trend chart
 Add a line chart showing sales over time.
 - [ ] Line chart shows sales over time with correct data
@@ -55,6 +47,14 @@ Commit:
 ## In Progress
 
 ## Done
+
+### TASK-3: KPI cards implementation
+Display Total Sales and Total Orders as prominent KPI cards.
+- [x] Total Sales displayed as formatted currency (~$116,500)
+- [x] Total Orders displayed as formatted count (482)
+- [x] KPIs displayed prominently at the top of the dashboard
+
+Commit: a367c9e, 0721055
 
 ### TASK-2: Data loading and basic structure
 Load `sales-data.csv` into a Pandas DataFrame and scaffold the page layout.
