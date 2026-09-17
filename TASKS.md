@@ -12,17 +12,17 @@ A milestone can only move to Done when:
 
 ## To Do
 
-### TASK-7: Deployment to Streamlit Community Cloud
-Deploy the dashboard and share a public URL.
-- [ ] App deployed and accessible via a public shareable URL
-- [ ] Deployed dashboard loads within 5 seconds
-- [ ] Deployed version verified to match local version (no errors)
-
-Commit:
-
 ## In Progress
 
 ## Done
+
+### TASK-7: Deployment to Streamlit Community Cloud
+Deploy the dashboard and share a public URL.
+- [x] App deployed and accessible via a public shareable URL: https://ai-dev-workflow-tutorial-sales-dashboard-chloe.streamlit.app/
+- [x] Deployed dashboard loads within 5 seconds
+- [x] Deployed version verified to match local version (no errors)
+
+Commit:
 
 ### TASK-6: Testing and refinement
 Verify the dashboard against the PRD's acceptance criteria and polish the presentation.
