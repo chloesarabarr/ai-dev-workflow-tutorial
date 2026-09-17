@@ -12,13 +12,6 @@ A milestone can only move to Done when:
 
 ## To Do
 
-### TASK-2: Data loading and basic structure
-Load `sales-data.csv` into a Pandas DataFrame and scaffold the page layout.
-- [ ] CSV loads without errors; date, numeric, and categorical columns parsed correctly
-- [ ] Basic page title/layout scaffolded in Streamlit
-
-Commit:
-
 ### TASK-3: KPI cards implementation
 Display Total Sales and Total Orders as prominent KPI cards.
 - [ ] Total Sales displayed as formatted currency (~$116,500)
@@ -62,6 +55,13 @@ Commit:
 ## In Progress
 
 ## Done
+
+### TASK-2: Data loading and basic structure
+Load `sales-data.csv` into a Pandas DataFrame and scaffold the page layout.
+- [x] CSV loads without errors; date, numeric, and categorical columns parsed correctly
+- [x] Basic page title/layout scaffolded in Streamlit
+
+Commit: b9c3d34, 3e33617
 
 ### TASK-1: Environment setup and project initialization
 Set up the project structure and install dependencies (Streamlit, Pandas, Plotly).
