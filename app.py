@@ -41,6 +41,11 @@ def region_bar_chart(region_df):
 
 try:
     df = calculations.load_data("data/sales-data.csv")
+    sales_total = calculations.total_sales(df)
+    orders_total = calculations.total_orders(df)
+    monthly_df = calculations.monthly_trend(df)
+    category_df = calculations.sales_by_category(df)
+    region_df = calculations.sales_by_region(df)
 except Exception as e:
     st.error(f"Could not load sales data: {e}")
     st.stop()
@@ -48,11 +53,11 @@ except Exception as e:
 st.title("ShopSmart Sales Dashboard")
 
 col1, col2 = st.columns(2)
-col1.metric("Total Sales", f"${calculations.total_sales(df):,.0f}")
-col2.metric("Total Orders", f"{calculations.total_orders(df):,}")
+col1.metric("Total Sales", f"${sales_total:,.0f}")
+col2.metric("Total Orders", f"{orders_total:,}")
 
-st.plotly_chart(trend_line_chart(calculations.monthly_trend(df)), use_container_width=True)
+st.plotly_chart(trend_line_chart(monthly_df), use_container_width=True)
 
 col3, col4 = st.columns(2)
-col3.plotly_chart(category_bar_chart(calculations.sales_by_category(df)), use_container_width=True)
-col4.plotly_chart(region_bar_chart(calculations.sales_by_region(df)), use_container_width=True)
+col3.plotly_chart(category_bar_chart(category_df), use_container_width=True)
+col4.plotly_chart(region_bar_chart(region_df), use_container_width=True)
