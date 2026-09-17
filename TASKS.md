@@ -12,14 +12,6 @@ A milestone can only move to Done when:
 
 ## To Do
 
-### TASK-5: Category and region breakdowns
-Add bar charts for sales by category and by region.
-- [ ] Bar chart shows sales by category, sorted highest to lowest, all categories shown
-- [ ] Bar chart shows sales by region, sorted highest to lowest, all regions shown
-- [ ] Interactive tooltips with exact values on both charts
-
-Commit:
-
 ### TASK-6: Testing and refinement
 Verify the dashboard against the PRD's acceptance criteria and polish the presentation.
 - [ ] Dashboard runs without errors or warnings
@@ -39,6 +31,14 @@ Commit:
 ## In Progress
 
 ## Done
+
+### TASK-5: Category and region breakdowns
+Add bar charts for sales by category and by region.
+- [x] Bar chart shows sales by category, sorted highest to lowest, all categories shown
+- [x] Bar chart shows sales by region, sorted highest to lowest, all regions shown
+- [x] Interactive tooltips with exact values on both charts
+
+Commit: dd4abb6, 2b9752c
 
 ### TASK-4: Sales trend chart
 Add a line chart showing sales over time.
